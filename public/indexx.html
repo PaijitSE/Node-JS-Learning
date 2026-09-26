@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SE - Store System</title>
+    <link rel="stylesheet" href="product.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="brand">
+            <div class="logo">LEGO</div>
+            <div class="title-group">
+                <h1>SE - Store System</h1>
+                <p>: ส่วนงานเจ้าหน้าที่</p>
+            </div>
+        </div>
+        <div class="user-menu">
+            <span class="welcome-text">สวัสดี คุณ ยินดี</span>
+            <nav class="nav-links">
+                <a href="#">สมาชิก</a> |
+                <a href="#">พนักงาน</a> |
+                <a href="#" class="active">สินค้า</a> |
+                <a href="#">รายงาน</a> |
+                <a href="#" class="logout">ออกจากระบบ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="action-header">
+            <h2>จัดการข้อมูลสินค้า</h2>
+            <button class="btn btn-add" id="openModalBtn">+ เพิ่มข้อมูลสินค้า</button>
+        </div>
+
+        <div class="table-responsive">
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th>รหัสสินค้า</th>
+                        <th>ชื่อสินค้า</th>
+                        <th>ประเภท</th>
+                        <th>จำนวน</th>
+                        <th>ราคาขาย</th>
+                        <th>สถานะ</th>
+                        <th>จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div class="modal-overlay hidden" id="productModal">
+        <div class="modal-card">
+            <h3 class="modal-title">เพิ่มข้อมูลสินค้าใหม่ หรือ แก้ไขข้อมูลเดิม</h3>
+
+            <form id="productForm" class="modal-body">
+                <div class="form-left">
+                    <div class="form-group">
+                        <label>รหัสสินค้า</label>
+                        <input type="text" id="productId" name="productId" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>ชื่อสินค้า</label>
+                        <input type="text" id="productName" name="productName" required>
+                    </div>
+
+                    <div class="form-group inline-2">
+                        <label>ประเภทสินค้า</label>
+                        <div class="inline-inputs">
+                            <input type="text" id="categoryCode" placeholder="รหัสประเภท">
+                            <select id="categorySelect">
+                                <option value="">เลือกประเภท</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group inline-2">
+                        <label>จำนวนสินค้า</label>
+                        <div class="inline-inputs">
+                            <input type="number" id="stockQty" placeholder="จำนวนในคลัง">
+                            <input type="text" id="unitName" placeholder="หน่วยนับ">
+                        </div>
+                    </div>
+
+                    <div class="form-group inline-2">
+                        <label>ราคาต่อหน่วย</label>
+                        <div class="inline-inputs">
+                            <input type="number" id="costPrice" placeholder="ราคาต้นทุน">
+                            <input type="number" id="sellPrice" placeholder="ราคาขาย">
+                        </div>
+                    </div>
+
+                    <div class="form-group inline-2">
+                        <label>ควบคุมคลัง</label>
+                        <div class="inline-inputs">
+                            <input type="number" id="minQty" placeholder="จำนวนต่ำสุด">
+                            <input type="number" id="maxQty" placeholder="จำนวนสูงสุด">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>รายละเอียด</label>
+                        <textarea id="description" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>สถานะ</label>
+                        <select id="statusSelect">
+                            <option value="active">พร้อมใช้งาน</option>
+                            <option value="inactive">ยกเลิกใช้งาน</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-right">
+                    <div class="image-preview-container">
+                        <p>รูปสินค้า</p>
+                        <div class="circle-avatar" id="avatarPreview"></div>
+                        <input type="file" id="imageInput" accept="image/*" class="hidden">
+                        <button type="button" class="btn btn-upload" onclick="document.getElementById('imageInput').click()">อัปโหลดรูป</button>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-cancel" id="closeModalBtn">ยกเลิก</button>
+                        <button type="submit" class="btn btn-save">บันทึกข้อมูล</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="product.js"></script>
+</body>
+
+</html>
