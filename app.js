@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const path = require("path");
 
 const app = express();
-const port = process.env.PORT || 4000; //จำลอง Server
+const PORT = process.env.PORT; //จำลอง Server
 
 app.use(morgan("combined"));
 app.use(express.static(path.join(__dirname, "/public/")));
@@ -15,13 +15,12 @@ app.set("view engine", "ejs");
 //สำหรับจัดการ request เข้ามาผ่าน port แบบ / จะส่ง response อะไรไป
 app.get("/", (req, res) => {
   res.render("index", {
-    username: "paijit",
-    // ,
-    // customers: ["neng", "noi", "nub"],
+    username: "paijit55+",
+    customers: ["neng", "noi", "nub", "nam"],
   });
 });
 
 //กำหนดให้ app รอฟังการร้องขอที่ Port
-app.listen(port, () => {
-  debug("listening on port " + port);
+app.listen(PORT, () => {
+  console.log("listening on port " + PORT);
 });
