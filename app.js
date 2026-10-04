@@ -2,6 +2,7 @@ const express = require("express");
 const debug = require("debug")("app");
 const morgan = require("morgan");
 const path = require("path");
+const memberRouter = express.Router();
 
 const app = express();
 const PORT = process.env.PORT; //จำลอง Server
@@ -9,16 +10,21 @@ const PORT = process.env.PORT; //จำลอง Server
 app.use(morgan("combined"));
 app.use(express.static(path.join(__dirname, "/public/")));
 
-app.set("views", "./src/views");
-app.set("view engine", "ejs");
+// app.set("views", "./src/views");
+// app.set("view engine", "ejs");
 
-//สำหรับจัดการ request เข้ามาผ่าน port แบบ / จะส่ง response อะไรไป
-app.get("/", (req, res) => {
-  res.render("index", {
-    username: "paijit55+",
-    customers: ["neng", "noi", "nub", "nam"],
-  });
+memberRouter.route("/").get((req, res) => {
+  res.send("Hello, I'm Members");
 });
+
+app.use("/members", memberRouter);
+
+// app.get("/", (req, res) => {
+//   res.render("index", {
+//     username: "softeng@g.lpru.ac.th",
+//     customers: ["neng", "noi", "nub", "nam"],
+//   });
+// });
 
 //กำหนดให้ app รอฟังการร้องขอที่ Port
 app.listen(PORT, () => {
