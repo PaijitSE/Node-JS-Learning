@@ -2,6 +2,7 @@ const express = require("express");
 const debug = require("debug")("app");
 const morgan = require("morgan");
 const path = require("path");
+const products = require("./data/products.json");
 
 // กำหนดเส้นทางให้กับเพจที่ไป
 const memberRouter = express.Router();
@@ -21,30 +22,7 @@ memberRouter.route("/").get((req, res) => {
 });
 
 productRouter.route("/").get((req, res) => {
-  res.render("products", {
-    products: [
-      {
-        productTitle: "น้ำยาล้างจาน",
-        productDescription: "น้ำยาสูง 1 ดีเลิศ",
-        productPrice: 45,
-      },
-      {
-        productTitle: "น้ำยาล้างจาน",
-        productDescription: "น้ำยาสูง 2 ดีเลิศ",
-        productPrice: 45,
-      },
-      {
-        productTitle: "น้ำยาล้างจาน",
-        productDescription: "น้ำยาสูง 3 ดีเลิศ",
-        productPrice: 45,
-      },
-      {
-        productTitle: "น้ำยาล้างจาน",
-        productDescription: "น้ำยาสูง 4 ดีเลิศ",
-        productPrice: 45,
-      },
-    ],
-  });
+  res.render("products", products);
 });
 
 app.use("/members", memberRouter);
