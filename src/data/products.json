@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "productTitle": "น้ำยาล้างจาน 1",
+    "productDescription": "น้ำยาสูง 1 ดีเลิศ",
+    "productPrice": 45
+  },
+  {
+    "id": 1,
+    "productTitle": "น้ำยาล้างจาน 2",
+    "productDescription": "น้ำยาสูง 2 ดีเลิศ",
+    "productPrice": 55
+  },
+  {
+    "id": 2,
+    "productTitle": "น้ำยาล้างจาน 3",
+    "productDescription": "น้ำยาสูง 3 ดีเลิศ",
+    "productPrice": 60
+  },
+  {
+    "id": 3,
+    "productTitle": "น้ำยาล้างจาน 4",
+    "productDescription": "น้ำยาสูง 4 ดีเลิศ",
+    "productPrice": 75
+  },
+  {
+    "id": 4,
+    "productTitle": "น้ำยาล้างจาน 5",
+    "productDescription": "น้ำยาสูง 4 ดีเยี่ยม",
+    "productPrice": 200
+  }
+]

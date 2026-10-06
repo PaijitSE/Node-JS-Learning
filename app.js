@@ -2,14 +2,10 @@ const express = require("express");
 const debug = require("debug")("app");
 const morgan = require("morgan");
 const path = require("path");
-const products = require("./data/products.json");
-
-// กำหนดเส้นทางให้กับเพจที่ไป
-const memberRouter = express.Router();
-const productRouter = express.Router();
 
 const app = express();
 const PORT = process.env.PORT; //จำลอง Server
+const productsRouter = require("./src/router/productRouter");
 
 app.use(morgan("combined"));
 app.use(express.static(path.join(__dirname, "/public/")));
@@ -17,17 +13,7 @@ app.use(express.static(path.join(__dirname, "/public/")));
 app.set("views", "./src/views");
 app.set("view engine", "ejs");
 
-memberRouter.route("/").get((req, res) => {
-  res.send("Hello, I'm Members");
-});
-
-productRouter.route("/").get((req, res) => {
-  res.render("products", products);
-});
-
-app.use("/members", memberRouter);
-
-app.use("/products", productRouter);
+app.use("/products", productsRouter);
 
 app.get("/", (req, res) => {
   res.render("index", {
